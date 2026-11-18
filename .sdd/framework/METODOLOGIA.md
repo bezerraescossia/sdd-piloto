@@ -1,6 +1,6 @@
 # Framework SDD Startups
 
-Metodologia v2.3 · repositório de referência. Edições só pelo Tech Lead, com entrada em [`CHANGELOG.md`](CHANGELOG.md). Os templates ficam em [`templates/`](templates/).
+Metodologia v2.5 · repositório de referência. Edições só pelo Tech Lead, com entrada em [`CHANGELOG.md`](CHANGELOG.md). Os templates ficam em [`templates/`](templates/).
 
 ## Visão geral
 
@@ -258,6 +258,8 @@ Todo artefato tem um dono, vive no repositório junto do código e só avança p
 | Prompts, ferramentas e versão do modelo | Dev ou Engenheiro de IA | Avaliação sem regressão, medida pelo QA |
 | Evidence pack | Dev (IA) ou Engenheiro de IA/ML (dados) | Tech Lead audita, QA mede, PO aceita (G3) |
 | Runbook e observabilidade | Tech Lead | Confirmado na entrega (Fase 4) |
+| Decisão que cruza artefatos | Quem decide: PO (produto), Tech Lead (técnico), Sponsor (impasse final) | Registrada em `.sdd/decisions/`, ligada à cláusula |
+| Ledger de gates e registros de aprovação | PO e Tech Lead (ledger); PO registra a aprovação externa | Cada aprovador escreve a própria linha |
 | Incidente de comportamento e caso real | PO (registro), Engenheiro de IA (caso de avaliação), QA (conjunto de destino) | Entra pelo ciclo normal, no G2 |
 
 **Definition of Ready (G2):** a feature spec tem comportamento descrito, critérios de aceite testáveis ou avaliáveis, exemplos, orçamento de custo e latência, restrições técnicas e dependências declaradas. O Tech Lead confirmou que cada critério pode ser verificado e o QA confirmou que os testes existem e o Engenheiro de IA, que a avaliação existe.
@@ -266,34 +268,45 @@ Todo artefato tem um dono, vive no repositório junto do código e só avança p
 
 ## Anexo: templates dos artefatos e estrutura do repositório
 
-Cada artefato tem um template em Markdown em [`framework/templates/`](templates/), para que o PO preencha sem ferramenta especial e o agente leia direto. Cada seção de um template existe porque um gate a exige, e um comentário no início da seção diz qual.
+Cada artefato tem um template em Markdown em [`.sdd/framework/templates/`](templates/), para que o PO preencha sem ferramenta especial e o agente leia direto. Cada seção de um template existe porque um gate a exige, e um comentário no início da seção diz qual.
 
 | Template | Caminho final | Fase | Gate | Dono (preenche) | Quem aprova |
 | --- | --- | --- | --- | --- | --- |
-| `01-brief.md` | `sdd/brief.md` | 0 Intake | G0 | PO | Cliente e Sponsor |
-| `03-data-contract.md` | `sdd/data-contracts/DC-001-<fonte>.md` | 0 Intake e features de dados | G0, G2 | Data Owner | Tech Lead confirma viabilidade; Segurança revisa dados pessoais |
-| `04-system-spec.md` | `sdd/system-spec.md` | 1 Fundação | G1 | Tech Lead | PO (negócio), Segurança (guardrails e permissões) |
-| `02-feature-spec.md` | `sdd/features/FEAT-001-<slug>/spec.md` | 2 Ciclo por feature | G2, G3 | PO e Tech Lead | Tech Lead, QA e Engenheiro de IA no G2 |
-| `07-plano.md` | `sdd/features/FEAT-001-<slug>/plan.md` | 2 Ciclo por feature | Aprovação do plano; revisão de cada task | Tech Lead, com o agente | Tech Lead aprova o plano; Dev aprova cada task |
-| `05-evidence-pack.md` | `sdd/features/FEAT-001-<slug>/evidence-pack.md` | 2 Ciclo por feature | G3 | Dev ou Engenheiro de IA/ML | Tech Lead audita, QA mede, PO aceita |
-| `06-incidente-comportamento.md` | `sdd/incidentes/INC-001-<slug>.md` | 5 Operação | entra pelo G2 | PO, QA e Engenheiro de IA | Tech Lead |
+| `01-brief.md` | `.sdd/brief.md` | 0 Intake | G0 | PO | Cliente e Sponsor |
+| `03-data-contract.md` | `.sdd/contracts/DC-001-<fonte>.md` | 0 Intake e features de dados | G0, G2 | Data Owner | Tech Lead confirma viabilidade; Segurança revisa dados pessoais |
+| `04-system-spec.md` | `.sdd/system-spec.md` | 1 Fundação | G1 | Tech Lead | PO (negócio), Segurança (guardrails e permissões) |
+| `02-feature-spec.md` | `.sdd/features/FEAT-001-<slug>/spec.md` | 2 Ciclo por feature | G2, G3 | PO e Tech Lead | Tech Lead, QA e Engenheiro de IA no G2 |
+| `07-plano.md` | `.sdd/features/FEAT-001-<slug>/plan.md` | 2 Ciclo por feature | Aprovação do plano; revisão de cada task | Tech Lead, com o agente | Tech Lead aprova o plano; Dev aprova cada task |
+| `05-evidence-pack.md` | `.sdd/features/FEAT-001-<slug>/evidence-pack.md` | 2 Ciclo por feature | G3 | Dev ou Engenheiro de IA/ML | Tech Lead audita, QA mede, PO aceita |
+| `06-incidente-comportamento.md` | `.sdd/incidents/INC-001-<slug>.md` | 5 Operação | entra pelo G2 | PO, QA e Engenheiro de IA | Tech Lead |
+| `08-decisao.md` | `.sdd/decisions/DEC-001-<slug>.md` | Todas | registro contra a cláusula | Quem decide | Quem decide |
+| `09-gates.md` | `.sdd/gates.md` | Todas | G0 a G3 | PO e Tech Lead | Cada aprovador, na própria linha |
+| `10-aprovacao.md` | `.sdd/approvals/APR-001-<slug>.md` | 0 Intake, G2 | G0, G2 | PO registra | Cliente, Sponsor ou Data Owner |
 
-**Regra de uso.** Copie o template para o caminho final em `sdd/` e nunca edite o original. Campo sem resposta vira pergunta em aberto no próprio documento. Escreva para o agente: prefira exemplos concretos de entrada e saída a descrições gerais. Uma mudança em um template entra no [`CHANGELOG.md`](CHANGELOG.md), aprovada pelo Tech Lead.
+**Regra de uso.** Copie o template para o caminho final em `.sdd/` e nunca edite o original. Campo sem resposta vira pergunta em aberto no próprio documento. Escreva para o agente: prefira exemplos concretos de entrada e saída a descrições gerais. Uma mudança em um template entra no [`CHANGELOG.md`](CHANGELOG.md), aprovada pelo Tech Lead.
 
-**Estrutura do repositório.**
+**Estrutura do repositório.** Um repositório por startup. Tudo o que é processo fica em `.sdd/`; só `AGENTS.md` e `CLAUDE.md` ficam na raiz, porque as ferramentas os procuram ali. O código vive num workspace uv, com `packages/*` como membros (o esqueleto é criado na Fase 1).
 
 ```text
-AGENTS.md                 ponteiro e regras invioláveis dos agentes (CLAUDE.md importa este)
-framework/                esta metodologia e os templates; dono: Tech Lead
-sdd/                      estado do projeto: um artefato preenchido por arquivo
+AGENTS.md                      regras invioláveis dos agentes (CLAUDE.md importa este)
+.sdd/
+  framework/                   esta metodologia, templates e CHANGELOG; dono: Tech Lead
+  brief.md                     Fase 0
+  gates.md                     ledger dos gates G0 a G3, com links para as evidências
+  contracts/                   DC-001-<fonte>.md, um por fonte de dados
+  decisions/                   DEC-001-<slug>.md, decisões que cruzam artefatos
+  approvals/                   registros externos de aprovação (cliente, Sponsor, Data Owner)
+  system-spec.md               Fase 1
+  evals/
+    dev/                       conjunto de desenvolvimento, visível aos agentes
+    validation.md              só o contrato e o hash do conjunto retido
   features/FEAT-001-<slug>/{spec,plan,evidence-pack}.md
-evals/
-  dev/                    conjunto de desenvolvimento, visível aos agentes
-  validacao.md            só o contrato e o hash do conjunto retido
-src/                      código derivado da spec
+  incidents/INC-001-<slug>.md
+packages/                      membros do workspace uv: código derivado da spec (inclui eval-harness)
+pyproject.toml                 raiz do workspace uv (Fase 1)
 ```
 
-O conjunto de validação retido nunca entra no repositório: fica sob custódia do QA, e só o harness no CI o lê. A feature aceita (G3) não muda de pasta; o `Status` da `spec.md` passa a `arquivada`.
+Convenções: nomes de arquivo e pasta em inglês, minúsculos, com hífen; conteúdo em português. IDs: `FEAT-`, `DC-`, `INC-`, `DEC-` mais número. O `Status` de cada artefato usa o vocabulário fechado de [`CHANGELOG.md`](CHANGELOG.md). A aprovação é escrita pelo humano no próprio artefato (nome, papel, data) e resumida em `gates.md`; aprovações do cliente, do Sponsor e do Data Owner entram como registro anexado em `approvals/`. O conjunto de validação retido nunca entra no repositório: fica sob custódia do QA, e só o harness no CI o lê. A feature aceita (G3) não muda de pasta; o `Status` da `spec.md` passa a `arquivada`.
 
 ## Métricas do processo e adoção
 
@@ -352,7 +365,8 @@ Os riscos principais são gargalos de decisão na equipe e no apoio externo, a q
 | --- | --- | --- |
 | v1.0 | 2026-11-11 | Primeira versão, PO e Dev, fases 0 a 4 |
 | v2.0 (rascunho) | 2026-11-13 | Oito papéis, squad e papéis do projeto, data contracts, tipos de feature, Fase 5 de operação, métricas e piloto |
-| v2.1 (rascunho) | 2026-11-13 | Oito diagramas de fluxo e anexo com os seis templates dos artefatos (templates/sdd/, v1.0) |
+| v2.1 (rascunho) | 2026-11-13 | Oito diagramas de fluxo e anexo com os templates dos artefatos (templates/sdd/, v1.0) |
 | v2.2 (rascunho) | 2026-11-16 | Engenheiro de IA no squad (golden dataset, datasets de treino e teste, harness de avaliação); QA passa a cobrir os testes do sistema como um todo e mantém a custódia do conjunto retido. Equipe base reduzida a seis papéis (PO, Tech Lead, Dev, QA, Engenheiro de IA/ML, agentes de IA); SRE absorvido por Tech Lead e Dev, Data Engineer pelo Engenheiro de IA/ML, Data Owner do lado do cliente, Segurança e Compliance como apoio sob demanda |
 | v2.3 (rascunho) | 2026-11-16 | Renomeado para Framework SDD Startups: uma equipe por startup do programa; removidas as regras de múltiplos squads (Tech Lead do projeto, PO líder, paralelismo entre squads); Tech Lead garante a verificabilidade dos critérios na Fase 0 |
-| v2.4 | 2026-11-16 | Metodologia passa a viver no repositório (`framework/`), com diagramas em Mermaid. Template 07 (plano) incluído; templates v1.1; incidente de comportamento com dono PO, QA e Engenheiro de IA; conjunto de validação retido fora do repositório; estrutura `framework/`, `sdd/`, `evals/`, `src/` |
+| v2.4 | 2026-11-16 | Metodologia passa a viver no repositório (`.sdd/framework/`), com diagramas em Mermaid. Template 07 (plano) incluído; templates v1.1; incidente de comportamento com dono PO, QA e Engenheiro de IA; conjunto de validação retido fora do repositório; estrutura `framework/`, `sdd/`, `evals/`, `src/` |
+| v2.5 | 2026-11-18 | Todo o material do processo passa a viver numa única pasta oculta, `.sdd/`, e o código fica num workspace uv (`packages/*`). Novos artefatos: decisão (DEC), ledger de gates e registro de aprovação externa. Vocabulário fechado de `Status`. Templates v1.2 |
