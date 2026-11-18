@@ -87,7 +87,7 @@ mpróprias, genéricas e sobre a IA | Pergunta em aberto (P9) | Pergunta em aber
 
 | Fonte | Data Owner | Contrato assinado? | Dados pessoais? | Link para o contrato |
 | --- | --- | --- | --- | --- |
-| Documentos enviados pelo cliente (pastas e arquivos; ex.: documentos de projetos) | Lucas (cliente) | não | Pergunta em aberto (P12) | Não existe ainda (`sdd/data-contracts/DC-001-<fonte>.md`) |
+| Documentos enviados pelo cliente (pastas e arquivos; ex.: documentos de projetos) | Lucas (cliente) | não | Pergunta em aberto (P12) | Não existe ainda (`.sdd/contracts/DC-001-<fonte>.md`) |
 
 Formatos aceitos no envio: PDF, Word, Excel, PowerPoint e Markdown. A validar com o cliente se há outro formato desejado (P13).
 
@@ -111,7 +111,7 @@ Há dados para montar o golden dataset? **Não.** Não existe hoje conjunto de d
 | Técnico | O modelo de IA deve ser executado localmente, no hardware do usuário; nenhum modelo hospedado em nuvem pode ser usado. A solução é uma aplicação web local. Hardware mínimo e de referência: o da máquina de desenvolvimento (Intel Core Ultra 9 185H, 62 GB de RAM), similar ao do cliente. GPU opcional: a execução será tentada só em CPU (P17) | Tech Lead |
 | Técnico (avaliação) | Não existe golden dataset. Sem ele, os critérios de modelo não podem ser medidos (P24) | Engenheiro de IA/ML |
 | Cliente (disponibilidade, escopo) | Cliente leigo em tecnologia: a interface precisa ser simples e direta. Pontos ainda a validar com o cliente: métricas (P7), formatos (P13), idioma (P19) | PO |
-| Papéis | Rafael acumula Dev, Tech Lead, QA e Engenheiro de IA/ML, o que conflita com a regra "quem implementa nunca é quem mede nem quem aceita". Tratado como exceção de projeto, sem alterar o `framework/`: Guilherme rotula o golden dataset e guarda o conjunto retido (P24, P26). Pendências em P26. Segurança e Compliance ainda sem nome (P21) | PO |
+| Papéis | Rafael acumula Dev, Tech Lead, QA e Engenheiro de IA/ML, o que conflita com a regra "quem implementa nunca é quem mede nem quem aceita". Tratado como exceção de projeto, sem alterar o `.sdd/framework/`: Guilherme rotula o golden dataset e guarda o conjunto retido (P24, P26). Pendências em P26. Segurança e Compliance ainda sem nome (P21) | PO |
 
 ## 7. Parecer de viabilidade
 
@@ -136,9 +136,9 @@ Há dados para montar o golden dataset? **Não.** Não existe hoje conjunto de d
 | P19 | Em que idioma(s) o cliente fará as perguntas e receberá as respostas? | PO com o cliente | |
 | P21 | Quem ocupa o papel de Segurança e Compliance (veto sobre guardrails, dados pessoais e permissões dos agentes)? | PO | |
 | P22 | Formato do feedback de cada resposta (ex.: certo/errado, nota): a definir com o cliente. | PO com o cliente | |
-| P24 | Pendente: o Lucas confirmar que os documentos escolhidos podem ser usados, e o P12 (dados pessoais) ser respondido antes de qualquer caso ir para `evals/dev/`. Decidido: ver "Respostas registradas" (Rafael) | PO, Engenheiro de IA/ML | |
+| P24 | Pendente: o Lucas confirmar que os documentos escolhidos podem ser usados, e o P12 (dados pessoais) ser respondido antes de qualquer caso ir para `.sdd/evals/dev/`. Decidido: ver "Respostas registradas" (Rafael) | PO, Engenheiro de IA/ML | |
 | P25 | Além da mensagem de informação não encontrada, há outras respostas pré-cadastradas previstas? | PO | |
-| P26 | Decidido por Rafael: exceção de projeto, sem mudar o `framework/` (ver "Respostas registradas"). Pendente: (1) quem assina a aceitação final dos critérios de sucesso (sugestão: PO); (2) se alguém audita o evidence pack ou se o acúmulo é total; (3) concordância do Guilherme com a exceção | PO, Tech Lead | |
+| P26 | Decidido por Rafael: exceção de projeto, sem mudar o `.sdd/framework/` (ver "Respostas registradas"). Pendente: (1) quem assina a aceitação final dos critérios de sucesso (sugestão: PO); (2) se alguém audita o evidence pack ou se o acúmulo é total; (3) concordância do Guilherme com a exceção | PO, Tech Lead | |
 | P27 | Quais são os demais guardrails, além de G-1 a G-3? | PO, Segurança e Compliance | |
 | P29 | Qual é o texto da resposta pré-cadastrada de cada guardrail (G-1, G-2, G-3)? | PO | |
 
@@ -179,8 +179,8 @@ Respondidas por Rafael (Tech Lead, Engenheiro de IA/ML) em 2026-11-16.
 | --- | --- | --- |
 | P17 | Hardware e configuração mínima | Hardware mínimo e de referência: o da máquina de desenvolvimento (Intel Core Ultra 9 185H, 62 GB de RAM; GPU NVIDIA RTX 2000 Ada com 8 GB de VRAM presente, mas opcional). O computador do cliente é similar. A execução será tentada só em CPU |
 | P16 | Custo e tempo de resposta | Custo de inferência zero. Latência provisória, a ajustar depois de medir: texto em até 60 s, documento em até 120 s, indexação com barra de progresso. Se a medição só em CPU estourar os alvos, a GPU deixa de ser opcional |
-| P26 (parcial) | Acúmulo de papéis | Exceção de projeto, sem alterar o `framework/`. Guilherme rotula o golden dataset. Pendências listadas em P26 |
-| P24 (parcial) | Golden dataset | Guilherme rotula as respostas e guarda o conjunto retido; Rafael trabalha só com `evals/dev/`. Guilherme, com o Lucas, escolhe os documentos reais e escreve perguntas, respostas corretas e referências esperadas. De 5 a 10 casos por categoria: casos de uso 1 e 2, ausência de resposta (caso 3) e G-1 a G-3, em português e em inglês |
+| P26 (parcial) | Acúmulo de papéis | Exceção de projeto, sem alterar o `.sdd/framework/`. Guilherme rotula o golden dataset. Pendências listadas em P26 |
+| P24 (parcial) | Golden dataset | Guilherme rotula as respostas e guarda o conjunto retido; Rafael trabalha só com `.sdd/evals/dev/`. Guilherme, com o Lucas, escolhe os documentos reais e escreve perguntas, respostas corretas e referências esperadas. De 5 a 10 casos por categoria: casos de uso 1 e 2, ausência de resposta (caso 3) e G-1 a G-3, em português e em inglês |
 
 ## 9. Aprovação (G0)
 
