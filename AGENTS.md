@@ -34,5 +34,6 @@ Este projeto é desenvolvido pela Metodologia SDD. Este arquivo só aponta para 
 
 ## Convenções de commit
 
-- Mudança de framework: prefixo `framework:`, nunca misturada com mudança de projeto.
-- Mudança de projeto: um commit por task do plano aprovado.
+- Todo commit segue [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/): `<tipo>[escopo opcional]: <descrição>`.
+- Tipos: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
+- Descrição no imperativo, em minúsculas, sem ponto final. Mudança incompatível: `!` após o tipo/escopo e rodapé `BREAKING CHANGE:`.
