@@ -12,6 +12,8 @@ Este projeto é desenvolvido pela Metodologia SDD. Este arquivo só aponta para 
 
 ## Como descobrir a fase atual
 
+0. **Leia primeiro [`.sdd/state.md`](.sdd/state.md)**: fase, bloqueios, próxima ação e o que aguarda resposta. Ele não substitui os passos abaixo; se divergir do `Status` dos artefatos, vale o artefato e você avisa o PO. Você não decide nada nele.
+
 1. Leia `.sdd/` e o `Status` de cada artefato. Se `.sdd/brief.md` não existe ou não está `validado (G0)`, é a Fase 0.
 2. Sem `.sdd/system-spec.md` aprovada (G1), é a Fase 1.
 3. Com feature em `.sdd/features/FEAT-xxx-<slug>/`, o `Status` da `spec.md` e do `plan.md` diz o passo do ciclo da Fase 2.
