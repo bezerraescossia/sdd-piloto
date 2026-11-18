@@ -1,6 +1,6 @@
 # Framework SDD Startups
 
-Metodologia v2.5 · repositório de referência. Edições só pelo Tech Lead, com entrada em [`CHANGELOG.md`](CHANGELOG.md). Os templates ficam em [`templates/`](templates/).
+Metodologia v2.6 · repositório de referência. Edições só pelo Tech Lead, com entrada em [`CHANGELOG.md`](CHANGELOG.md). Os templates ficam em [`templates/`](templates/).
 
 ## Visão geral
 
@@ -259,6 +259,7 @@ Todo artefato tem um dono, vive no repositório junto do código e só avança p
 | Evidence pack | Dev (IA) ou Engenheiro de IA/ML (dados) | Tech Lead audita, QA mede, PO aceita (G3) |
 | Runbook e observabilidade | Tech Lead | Confirmado na entrega (Fase 4) |
 | Decisão que cruza artefatos | Quem decide: PO (produto), Tech Lead (técnico), Sponsor (impasse final) | Registrada em `.sdd/decisions/`, ligada à cláusula |
+| Estado do projeto (`state.md`) | PO | Atualizado ao fim de cada sessão; não tem gate |
 | Ledger de gates e registros de aprovação | PO e Tech Lead (ledger); PO registra a aprovação externa | Cada aprovador escreve a própria linha |
 | Incidente de comportamento e caso real | PO (registro), Engenheiro de IA (caso de avaliação), QA (conjunto de destino) | Entra pelo ciclo normal, no G2 |
 
@@ -282,6 +283,7 @@ Cada artefato tem um template em Markdown em [`.sdd/framework/templates/`](templ
 | `08-decisao.md` | `.sdd/decisions/DEC-001-<slug>.md` | Todas | registro contra a cláusula | Quem decide | Quem decide |
 | `09-gates.md` | `.sdd/gates.md` | Todas | G0 a G3 | PO e Tech Lead | Cada aprovador, na própria linha |
 | `10-aprovacao.md` | `.sdd/approvals/APR-001-<slug>.md` | 0 Intake, G2 | G0, G2 | PO registra | Cliente, Sponsor ou Data Owner |
+| `11-state.md` | `.sdd/state.md` | Todas | nenhum | PO | ninguém; o agente só lê |
 
 **Regra de uso.** Copie o template para o caminho final em `.sdd/` e nunca edite o original. Campo sem resposta vira pergunta em aberto no próprio documento. Escreva para o agente: prefira exemplos concretos de entrada e saída a descrições gerais. Uma mudança em um template entra no [`CHANGELOG.md`](CHANGELOG.md), aprovada pelo Tech Lead.
 
@@ -292,6 +294,7 @@ AGENTS.md                      regras invioláveis dos agentes (CLAUDE.md import
 .sdd/
   framework/                   esta metodologia, templates e CHANGELOG; dono: Tech Lead
   brief.md                     Fase 0
+  state.md                     retrato do momento: fase, bloqueios, próxima ação, o que aguarda resposta
   gates.md                     ledger dos gates G0 a G3, com links para as evidências
   contracts/                   DC-001-<fonte>.md, um por fonte de dados
   decisions/                   DEC-001-<slug>.md, decisões que cruzam artefatos
@@ -370,3 +373,4 @@ Os riscos principais são gargalos de decisão na equipe e no apoio externo, a q
 | v2.3 (rascunho) | 2026-11-16 | Renomeado para Framework SDD Startups: uma equipe por startup do programa; removidas as regras de múltiplos squads (Tech Lead do projeto, PO líder, paralelismo entre squads); Tech Lead garante a verificabilidade dos critérios na Fase 0 |
 | v2.4 | 2026-11-16 | Metodologia passa a viver no repositório (`.sdd/framework/`), com diagramas em Mermaid. Template 07 (plano) incluído; templates v1.1; incidente de comportamento com dono PO, QA e Engenheiro de IA; conjunto de validação retido fora do repositório; estrutura `framework/`, `sdd/`, `evals/`, `src/` |
 | v2.5 | 2026-11-18 | Todo o material do processo passa a viver numa única pasta oculta, `.sdd/`, e o código fica num workspace uv (`packages/*`). Novos artefatos: decisão (DEC), ledger de gates e registro de aprovação externa. Vocabulário fechado de `Status`. Templates v1.2 |
+| v2.6 | 2026-11-18 | Novo artefato `.sdd/state.md` (template 11): fase, bloqueios, próxima ação e pendências de resposta, para que uma sessão nova saiba o que fazer agora |

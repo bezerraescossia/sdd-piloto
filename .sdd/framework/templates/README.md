@@ -24,6 +24,7 @@ Versão dos templates: v1.2 · acompanha [`../METODOLOGIA.md`](../METODOLOGIA.md
 | `06-incidente-comportamento.md` | `.sdd/incidents/INC-001-<slug>.md` | 5 Operação | Entra pelo G2 | PO, QA e Engenheiro de IA | Tech Lead |
 | `08-decisao.md` | `.sdd/decisions/DEC-001-<slug>.md` | Todas | Registro contra a cláusula | Quem decide (PO, Tech Lead ou Sponsor) | Quem decide |
 | `09-gates.md` | `.sdd/gates.md` | Todas | G0 a G3 | PO e Tech Lead | Cada aprovador escreve a própria linha |
+| `11-state.md` | `.sdd/state.md` | Todas | Nenhum (retrato do momento) | PO | Ninguém aprova; o agente só lê |
 | `10-aprovacao.md` | `.sdd/approvals/APR-001-<slug>.md` | 0 Intake, G2 | G0, G2 | PO registra | Cliente, Sponsor ou Data Owner (prova anexada) |
 
 ## Ordem de preenchimento
@@ -34,6 +35,7 @@ Versão dos templates: v1.2 · acompanha [`../METODOLOGIA.md`](../METODOLOGIA.md
 
 - **Cabeçalho padrão:** versão, data, dono, status.
 - **Vocabulário fechado de `Status`:** `rascunho`, `em revisão`, `validado (G0)`, `aprovado (G1)`, `pronta (G2)`, `em execução`, `aceita (G3)`, `arquivada`, `decidida`, `substituída`, `registrado`. Cada template lista os valores que aceita. O agente deriva a fase atual desses valores.
+- **Estado:** `.sdd/state.md` guarda fase, bloqueios, próxima ação e o que aguarda resposta, e é atualizado ao fim de cada sessão.
 - **Aprovação:** escrita pelo humano no artefato (nome, papel, data) e resumida em `.sdd/gates.md`. Aprovação de cliente, Sponsor ou Data Owner entra como registro em `.sdd/approvals/`. O agente nunca escreve aprovação.
 - **Idioma e nomes:** nomes de arquivo e pasta em inglês, minúsculos, com hífen; conteúdo em português.
 - **Papéis:** PO, Tech Lead, Dev, QA, Engenheiro de IA/ML, Segurança e Compliance, Data Owner, Sponsor. Os mesmos nomes de [`../METODOLOGIA.md`](../METODOLOGIA.md).

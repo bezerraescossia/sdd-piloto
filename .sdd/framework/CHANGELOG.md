@@ -4,6 +4,8 @@ Só o Tech Lead aprova mudanças em `framework/`. Cada mudança entra em commit 
 
 ## v1.2 · 2026-11-18
 
+- Template `11-state` e artefato `.sdd/state.md`: retrato do momento (fase, bloqueios, próxima ação, aguardando resposta), dono PO, sem gate. METODOLOGIA v2.6.
+
 - Todo o material do processo passa a viver em `.sdd/` (framework, brief, contratos, decisões, aprovações, system spec, evals de desenvolvimento, features, incidentes). Só `AGENTS.md` e `CLAUDE.md` ficam na raiz. O código vai para um workspace uv (`packages/*`).
 - Nomes em inglês e minúsculos, conteúdo em português: `contracts/`, `decisions/`, `incidents/`, `evals/validation.md`.
 - Templates novos: `08-decisao`, `09-gates` (ledger) e `10-aprovacao` (registro de aprovação externa do cliente, Sponsor e Data Owner).
